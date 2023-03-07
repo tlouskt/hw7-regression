@@ -145,10 +145,6 @@ class LogisticRegressor(BaseRegressor):
         Returns: 
             The mean loss (a single number).
         """
-        #avoid divide by zero error
-        y_pred[y_pred==0] = self.error
-        y_pred[y_pred==1] = 1 - self.error
-
         #calculate binary cross entropy loss
         loss = -np.mean((y_true * np.log(y_pred)) + ((1 - y_true) * np.log(1- y_pred)))
         return loss
