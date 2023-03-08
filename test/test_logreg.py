@@ -105,7 +105,7 @@ def test_gradient():
 	#calculate gradient
 	calc_grad = logr.calculate_gradient(X,y)
 	check_grad = np.array([-0.07946861, -0.24613528, -0.51280195, -0.81280195])
-	assert calc_grad == check_grad
+	assert np.allclose(calc_grad, check_grad)
 
 
 	X_train, X_val, y_train, y_val = utils.loadDataset(
