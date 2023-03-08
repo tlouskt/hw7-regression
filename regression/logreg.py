@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # (this is already complete!)
 class BaseRegressor():
 
-    def __init__(self, num_feats, learning_rate=0.01, tol=0.001, max_iter=100, batch_size=10):
+    def __init__(self, num_feats, learning_rate=0.01, tol=0.001, max_iter=100, batch_size=1):
 
         # Weights are randomly initialized
         self.W = np.random.randn(num_feats + 1).flatten()
@@ -108,7 +108,7 @@ class BaseRegressor():
 # Implement logistic regression as a subclass
 class LogisticRegressor(BaseRegressor):
 
-    def __init__(self, num_feats, learning_rate=0.01, tol=0.001, max_iter=100, batch_size=10):
+    def __init__(self, num_feats, learning_rate=0.01, tol=0.001, max_iter=100, batch_size=10, error=.00001):
         super().__init__(
             num_feats,
             learning_rate=learning_rate,
@@ -165,6 +165,7 @@ class LogisticRegressor(BaseRegressor):
         y_pred = self.make_prediction(X)
         err = y_true - y_pred
         #average gradients
-        grad = -X.T.dot(err) / len(y_true) 
+        gradient = -X.T.dot(err) / len(y_true)
+        return gradient
 
 
