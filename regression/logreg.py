@@ -165,7 +165,7 @@ class LogisticRegressor(BaseRegressor):
         y_pred = self.make_prediction(X)
         err = y_true - y_pred
         #average gradients
-        gradient = -X.T.dot(err) / len(y_true)
+        gradient = -np.dot(X.T, err) / len(y_true)
         return gradient
 
 
